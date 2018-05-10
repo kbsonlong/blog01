@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from flask import Flask
+from flask import Flask,redirect,url_for
 from config import DevConfig
 from app.auth.views import login
 from app.api.api_demo import api
@@ -20,8 +20,9 @@ app.register_blueprint(login)
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def index():
+    ##url_for(路由信息login注册的蓝图，home是处理函数)
+    return redirect(url_for('login.home'))
 
 
 if __name__ == '__main__':
